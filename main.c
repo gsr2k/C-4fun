@@ -16,6 +16,7 @@ int userAnime;
 int j;
 //fix bool later....
 bool isValid = true;
+bool isRunning = true;
 
 for (int i = 0; i < 8; i++) {
     fakeText[i] = welcomeText[i];
@@ -34,8 +35,9 @@ for (int i = 0; i < 8; i++) {
     printf ("Please select one of the options: \n");
     printf ("1 = Anime library || 2 = Anime Quiz\n");
     scanf("%d", &userDecision);
-    switch (userDecision) {
-        case 1: 
+    while (isRunning){
+        switch (userDecision) {
+            case 1: 
             printf ("========================================\n");
             printf ("Select one of the options bellow: \n");
             printf ("1 = Konosuba || 2 = Angel Beats\n");
@@ -44,47 +46,48 @@ for (int i = 0; i < 8; i++) {
             //2 = Angel Beats
             switch (userAnime){
                 case 1:
-                printf ("========================================\n");
-                printf ("Are you sure you selected: Konosuba?\n");
-                printf ("1 = yes | 2 = no\n");
-                int input;
-                scanf ("%d", &input);
-                if (input == 1 || isValid)
-                {
-                    printf ("Konosuba Characters: Aqua \n Megumin \n Darkness \n");
-                    printf ("Main Character: **Satou Kazuma**\n");
-                    printf ("Genre: Comedy, Isekai\n");
-                    printf ("Release Date: 2015\n");
-                }
-                else 
-                {
-                    printf ("Do you want to go back?");
-                }
-                break;
+                    printf ("========================================\n");
+                    printf ("Are you sure you selected: Konosuba?\n");
+                    printf ("1 = yes | 2 = no\n");
+                    int input;
+                    scanf ("%d", &input);
+                    if (input == 1)
+                    {
+                        printf ("Konosuba Characters: Aqua \n Megumin \n Darkness \n");
+                        printf ("Main Character: **Satou Kazuma**\n");
+                        printf ("Genre: Comedy, Isekai\n");
+                        printf ("Release Date: 2015\n");
+                    }
+                    
+                    else {
+                        printf ("going back to the start!\n");
+                    }          
+                    
+                    break;
 
-                default:
-                printf("Error: insert a valid number.");
-                break;
+                    default:
+                    printf("Error: insert a valid number.");
+                    break;
             }
 
 
 
 
 
-        break;
+            break;
 
-        case 2:
+            case 2:
 
-        break;
+            break;
 
-        case 3:
+            case 3:
 
-        break;
+            break;
 
-        default:
-            printf ("Error: insert a valid number");
-        break;
+            default:
+                printf ("Error: insert a valid number");
+            break;
+        }
+
     }
-
-
 }
