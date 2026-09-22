@@ -48,8 +48,6 @@ bool checkNormalChar (char input [])
 {
 
     //tem o problema de ser case sensitive
-    //pra ja vou deixar assim
-    //proximo commit eu aprimoro
     char normalChars [] = "abcdefghijklmnopqrstuvwxyz";
     char normalUpperCaseChars [] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     int l;
@@ -71,13 +69,22 @@ bool checkNormalChar (char input [])
 
 }
 
+bool checkLenght (char input [])
+{
+    if (strlen(input) <= 5)
+    {
+        return true;
+    }
+    
+    return false;
+}
+
 //acho que pode chamar de funcao "god", é bom ter uma dessa
 //pra n ficar poluindo o codigo da main fazendo varias checagem uma por uma
 bool checkPassword (char input [])
 {
-    return checkNumber (input) && checkNormalChar (input) && checkEspecialChar (input);
+    return checkNumber (input) && checkNormalChar (input) && checkEspecialChar (input) && checkLenght (input);
 }
-
 
 
 int main () {
@@ -97,15 +104,8 @@ scanf ("%29s", &userPassword);
     }
 
     else {
-        printf ("Wrong, the pass does not contain a Number.");
+        printf ("Wrong, the pass does not match the minimal resources.");
     }
-
-
-
-
-
-
-
 
 
 
