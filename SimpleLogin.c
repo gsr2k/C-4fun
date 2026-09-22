@@ -50,15 +50,20 @@ bool checkNormalChar (char input [])
     //tem o problema de ser case sensitive
     //pra ja vou deixar assim
     //proximo commit eu aprimoro
-    char normalChars [] = "abcdefghijklmnopqrstuv";
+    char normalChars [] = "abcdefghijklmnopqrstuvwxyz";
+    char normalUpperCaseChars [] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     int l;
     int p;
+    int c;
     for (l = 0; input [l] != '\0'; l++)
     {
         for (p = 0; normalChars [p] != '\0'; p++)
         {
-            if (input [l] == normalChars [p])
-            return true;
+            for (c = 0; normalUpperCaseChars [c] != '\0'; c++)
+            {
+                if (input [l] == normalChars [p] || normalUpperCaseChars [c])
+                return true;
+            }
         }
     }
 
@@ -83,7 +88,7 @@ char userName [30];
 scanf ("%29s", &userName);
 printf ("Please input your password\n");
 //é meio idiota um sistema pedir apenas 1 letra e 3 numeros, mas para ja deixa assim...
-printf ("Note: Your pass must cointain at least: 1 char, 3 numbers, 1 special char\n");
+printf ("Note: Your pass must cointain at least: 1 char, 3 numbers, 1 special char, 5 characters max for the password!\n");
 char userPassword [30];
 scanf ("%29s", &userPassword);
     if (checkPassword (userPassword))
