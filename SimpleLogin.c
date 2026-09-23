@@ -96,22 +96,30 @@ bool checkPassword (char input [])
 int main () {
 
 printf ("Login System\n");
+printf ("========================\n");
 //username
-printf ("Please input you user: ");
+printf ("Note: do not put spaces\n");
+printf ("========================\n");
+printf ("Please input your username: ");
 char userName [30];
 scanf ("%29s", userName);
+    //to do: improve conditional logic.....
+    //if it falls on the contaEmpitySpace condition it should ask de user to put again
+    //maybe reconstruct the logic by using switchs
     if (!containEmpitySpace (userName))
         {
-            printf ("Username accepted\n");
+            printf ("***Username accepted!***\n");
         }
         else
         {
             printf ("Don't put space!\n");
         }
 //password
+printf ("========================\n");
 printf ("Please input your password\n");
-//é meio idiota um sistema pedir apenas 1 letra e 3 numeros, mas para ja deixa assim...
-printf ("Note: Your pass must cointain at least: 1 char, 3 numbers, 1 special char, 10 characters max for the password!\n");
+printf ("Note: Your pass must cointain at least: \n");
+printf ("- Minimun 3 characteres\n - Max 10 characteres\n - Minimun 3 numbers\n - Minimun 1 special char\n");
+printf ("Input your pass: \n");
 char userPassword [30];
 scanf ("%29s", userPassword);
     if (checkPassword (userPassword))
