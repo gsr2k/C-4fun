@@ -45,24 +45,19 @@ bool checkEspecialChar (char input [])
 
 
 bool checkNormalChar (char input [])
-{
-
+{   //acabou perdendo o sentido esa funcao
+    //nesse contexto de programa simples
+    //mas deixa ai
     //tem o problema de ser case sensitive
-    char normalChars [] = "abcdefghijklmnopqrstuvwxyz";
-    char normalUpperCaseChars [] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    int l;
     int p;
-    int c;
-    for (l = 0; input [l] != '\0'; l++)
+    for (p = 0; input[p] != '\0'; p++)
     {
-        for (p = 0; normalChars [p] != '\0'; p++)
+        if ((input [p] >= 'a' && input [p] <= 'z') ||
+            (input [p] >= 'A' && input [p] <= 'Z'))
         {
-            for (c = 0; normalUpperCaseChars [c] != '\0'; c++)
-            {
-                if (input [l] == normalChars [p] || normalUpperCaseChars [c])
-                return true;
-            }
+            return true;
         }
+
     }
 
     return false;
@@ -71,7 +66,7 @@ bool checkNormalChar (char input [])
 
 bool checkLenght (char input [])
 {
-    if (strlen(input) <= 5)
+    if (strlen(input) <= 10 && strlen(input) > 3)
     {
         return true;
     }
@@ -79,25 +74,46 @@ bool checkLenght (char input [])
     return false;
 }
 
+bool containEmpitySpace (char input [])
+{
+    if (strchr (input, ' '))
+    {
+        return true;
+    }
+
+    return false;;
+}
+
 //acho que pode chamar de funcao "god", é bom ter uma dessa
 //pra n ficar poluindo o codigo da main fazendo varias checagem uma por uma
 bool checkPassword (char input [])
 {
-    return checkNumber (input) && checkNormalChar (input) && checkEspecialChar (input) && checkLenght (input);
+    return checkNumber (input) && checkNormalChar (input) && checkEspecialChar (input) && checkLenght (input) && containEmpitySpace (input);
 }
+
 
 
 int main () {
 
 printf ("Login System\n");
+//username
 printf ("Please input you user: ");
 char userName [30];
-scanf ("%29s", &userName);
+scanf ("%29s", userName);
+    if (!containEmpitySpace (userName))
+        {
+            printf ("Username accepted\n");
+        }
+        else
+        {
+            printf ("Don't put space!\n");
+        }
+//password
 printf ("Please input your password\n");
 //é meio idiota um sistema pedir apenas 1 letra e 3 numeros, mas para ja deixa assim...
-printf ("Note: Your pass must cointain at least: 1 char, 3 numbers, 1 special char, 5 characters max for the password!\n");
+printf ("Note: Your pass must cointain at least: 1 char, 3 numbers, 1 special char, 10 characters max for the password!\n");
 char userPassword [30];
-scanf ("%29s", &userPassword);
+scanf ("%29s", userPassword);
     if (checkPassword (userPassword))
     {
         printf ("Correct!");
